@@ -18,19 +18,20 @@ extension UILabel {
 
 public class SuperStarNamingAnimation {
     
-    var objWindow:UIWindow?
+    var objWindow:UIWindow
     var textToAnimate:String = "MADHAN"
     var arrayAnimationChar:[Character] = []
     var lblCaption: UILabel!
-    var vcObj: UIViewController?
+    var vcObj: UIViewController
     var strIdentifier: String = ""
-    var stbdObj: UIStoryboard!
+    var stbdObj: UIStoryboard
     
-    public init(currentWindowObj:UIWindow, currentStoryboardObj: UIStoryboard, endUpViewCtrlObj:UIViewController, endUpViewCtrlStoryboardIdentifier:String) {
+    public init(currentWindowObj:UIWindow, currentStoryboardObj: UIStoryboard, endUpViewCtrlObj:UIViewController, endUpViewCtrlStoryboardIdentifier:String, animateString: String) {
         objWindow = currentWindowObj
         stbdObj = currentStoryboardObj
         vcObj = endUpViewCtrlObj
         strIdentifier = endUpViewCtrlStoryboardIdentifier
+        textToAnimate = animateString
     }
     
     public func beginAnimation() {
@@ -49,12 +50,12 @@ public class SuperStarNamingAnimation {
 
     func addAnimationLabel(text:Character) {
         
-        lblCaption = UILabel.init(frame: CGRect(x: 0, y: 0, width: (objWindow?.bounds.width)!, height: (objWindow?.bounds.height)!))
+        lblCaption = UILabel.init(frame: CGRect(x: 0, y: 0, width: (objWindow.bounds.width), height: (objWindow.bounds.height)))
         lblCaption.textAlignment = .center
         lblCaption.textColor = UIColor.white
         lblCaption.font = UIFont.boldSystemFont(ofSize: 999.0)
         lblCaption.text = String(text)
-        objWindow?.addSubview(lblCaption)
+        objWindow.addSubview(lblCaption)
     }
 
     func doAnimate(animationChar cha:Character, charIndex:Int) {
@@ -78,13 +79,13 @@ public class SuperStarNamingAnimation {
             else {
                 
                 let vcObj = self.stbdObj.instantiateViewController(withIdentifier: self.strIdentifier)
-                self.objWindow?.rootViewController = vcObj
+                self.objWindow.rootViewController = vcObj
                 
                 UIView.animate(withDuration: 0.3,
                                delay: 0.0,
                                options: UIView.AnimationOptions.curveEaseIn,
                                animations: {
-                                self.objWindow?.rootViewController!.view.transform = .identity
+                                self.objWindow.rootViewController!.view.transform = .identity
                 },completion: nil)
             }
         })
