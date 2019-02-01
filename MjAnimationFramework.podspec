@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.homepage     = "http://madhans.000webhostapp.com/"
   s.license      = "All rights reserved © Madhan Raj"
   s.author       = { "bruceMJ" => "mjdev@live.in" }
-  s.source       = { :path => '.' }
+  s.source       = { :git => 'https://github.com/mjiosdev/MjAnimationFramework.git' }
   s.source_files  = "*.swift"
 
 end
